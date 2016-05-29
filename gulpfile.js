@@ -8,11 +8,11 @@ var gulp = require('gulp'),
 
 // Js Bundle
 gulp.task('bundleJS', function () {
-    var jQuery = './src/jquery/dist/jquery.js',
-        BootstrapJs = './src/bootstrap/dist/js/bootstrap.js',
-        angular = './src/angular/angular.js',
-        uiRouter = './src/angular-ui-router/release/angular-ui-router.js',
-        ngResource = './src/angular-resource/angular-resource.js',
+    var jQuery = './src/components/jquery/dist/jquery.js',
+        BootstrapJs = './src/components/bootstrap/dist/js/bootstrap.js',
+        angular = './src/components/angular/angular.js',
+        uiRouter = './src/components/angular-ui-router/release/angular-ui-router.js',
+        ngResource = './src/components/angular-resource/angular-resource.js',
         appModule = './src/js/modules/*.js',
         appService = './src/js/services/*.js',
         appRoutes = './src/js/routes/*.js',
@@ -24,7 +24,7 @@ gulp.task('bundleJS', function () {
         .pipe(uglify())
         .pipe(size({ gzip: true, showFiles: true }))
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest('./js'))
+        .pipe(gulp.dest('./assets/js'))
         .pipe(browserSync.stream());
 
     gulp.src([angular, uiRouter, ngResource])
@@ -33,7 +33,7 @@ gulp.task('bundleJS', function () {
         .pipe(uglify())
         .pipe(size({ gzip: true, showFiles: true }))
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest('./js'))
+        .pipe(gulp.dest('./assets/js'))
         .pipe(browserSync.stream());
 
     gulp.src([appModule, appService, appController, appRoutes])
@@ -41,27 +41,27 @@ gulp.task('bundleJS', function () {
         .pipe(concat('app-libs.min.js'))
         .pipe(size({ gzip: true, showFiles: true }))
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest('./js'))
+        .pipe(gulp.dest('./assets/js'))
         .pipe(browserSync.stream());
 });
 
 // CSS
 gulp.task('css', function () {
-    var bootStrap = './src/bootstrap/dist/css/bootstrap.css';
+    var bootStrap = './src/components/bootstrap/dist/css/bootstrap.css';
 
     return gulp.src([bootStrap])
         .pipe(minifyCSS('*'))
         .pipe(concat('style.min.css'))
         .pipe(size({ gzip: true, showFiles: true }))
-        .pipe(gulp.dest('./css'));
+        .pipe(gulp.dest('./assets/css'));
 });
 
 // Copiar archivos estaticos (icon fonts bootstrap/font-awesome)
 gulp.task('static', function () {
-    var BootstrapF = './src/bootstrap/fonts/**/*';
+    var BootstrapF = './src/components/bootstrap/fonts/**/*';
 
     return gulp.src([BootstrapF])
-        .pipe(gulp.dest('./fonts'));
+        .pipe(gulp.dest('./assets/fonts'));
 });
 
 
@@ -83,5 +83,5 @@ gulp.task('browser-sync', ['bundleJS'], function () {
         }
     });
 
-    gulp.watch('./src/**/*', ['js-watch']);
+    gulp.watch('./src/components/**/*', ['js-watch']);
 });
