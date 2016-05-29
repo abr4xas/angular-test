@@ -1,0 +1,29 @@
+{
+  "name": "Angular-Test",
+  "version": "1.0.0",
+  "description": "Curso de AngularJS de Codigofacilito.com aplicando las guias de estilo de John Papa",
+  "main": "gulpfile.js",
+  "authors": [
+    "Angel Cruz <me@abr4xas.org> (http://abr4xas.org)"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "angular js"
+  ],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "angular": "1.5.5",
+    "bootstrap": "^3.3.6",
+    "angular-ui-router": "^0.3.0",
+    "angular-resource": "^1.5.5"
+  }
+}
