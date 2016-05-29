@@ -16,11 +16,17 @@
         $urlRouterProvider.otherwise('/');
         $stateProvider
             .state('home', {
-            url : '/',
-            controller: 'postCtrl',
-            controllerAs : 'ctrl',
-            templateUrl : './templates/home/home_tpl.html'
-        });
+                url: '/',
+                controller: 'postCtrl',
+                controllerAs: 'ctrl',
+                templateUrl: './templates/home/home_tpl.html'
+            })
+            .state('post', {
+                url: '/post/:id',
+                controller: 'detailCtrl',
+                controllerAs: 'ctrl',
+                templateUrl: './templates/detail/post_detail_tpl.html'
+            });
         $locationProvider.html5Mode(false);
     }
     // Inyectando dependencias.

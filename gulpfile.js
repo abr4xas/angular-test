@@ -64,8 +64,6 @@ gulp.task('static', function () {
         .pipe(gulp.dest('./assets/fonts'));
 });
 
-
-
 // Default
 gulp.task('default', ['static', 'css', 'bundleJS', 'browser-sync']);
 
@@ -83,5 +81,5 @@ gulp.task('browser-sync', ['bundleJS'], function () {
         }
     });
 
-    gulp.watch('./src/components/**/*', ['js-watch']);
+    gulp.watch('./src/js/**/*', ['js-watch']);
 });

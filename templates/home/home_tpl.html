@@ -1,7 +1,7 @@
 <div class="post-list" ng-repeat="post in ctrl.entries | orderBy:'-id' | limitTo: 10">
     <!-- First Blog Post -->
     <h2>
-        <a href="#0/{{ post.id }}">{{ post.title }}</a>
+        <a ui-sref="post({id: post.id})">{{ post.title }}</a>
     </h2>
     <p class="lead">
         by <a href="#0">Start Bootstrap</a>
