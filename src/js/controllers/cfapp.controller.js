@@ -38,7 +38,7 @@
                 console.log(data);
                 vm.entry;
             });
-            
+
         }
     }
 
