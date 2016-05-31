@@ -37,7 +37,8 @@
                 }
             });
         $locationProvider.html5Mode(false);
-    }
+    } // End routes
+    
     // Inyectando dependencias.
     removerCache.$inject = ['$rootScope', '$templateCache'];
     /**
@@ -51,6 +52,6 @@
                 $templateCache.remove(current.templateUrl);
             }
         });
-    }
+    } // End removerCache
 
 })();

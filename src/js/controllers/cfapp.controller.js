@@ -24,7 +24,7 @@
                 vm.entries;
             }); // regresa todas las publicaciones
         }
-    }
+    } // End Post
 
     function Detail(GetPostDetailService, $stateParams) {
         var vm = this;
@@ -39,9 +39,10 @@
                 vm.entry = data;
                 //console.log(data);
                 vm.entry;
-            });
+            }); // regresa contenido del post
         }
-    }
+    } // End Detail
+    
     function Comments(GetCommentsFactory, $stateParams) {
         var vm = this;
         vm.comment;
@@ -55,9 +56,9 @@
                 vm.comment = data;
                 //console.log(data);
                 vm.comment;
-            });
+            }); // regresa los comentarios relacionados al post
         }
-
-    }
-
+        
+    } // End Comments
+    
 })();
