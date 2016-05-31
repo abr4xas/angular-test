@@ -23,9 +23,18 @@
             })
             .state('post', {
                 url: '/post/:id',
-                controller: 'detailCtrl',
-                controllerAs: 'ctrl',
-                templateUrl: './templates/detail/post_detail_tpl.html'
+                views: {
+                    post: {
+                        controller: 'detailCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: './templates/detail/post_detail_tpl.html'
+                    },
+                    comments: {
+                        controller: 'commentsCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: './templates/comments/comments_tpl.html'
+                    }
+                }
             });
         $locationProvider.html5Mode(false);
     }

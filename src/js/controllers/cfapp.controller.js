@@ -37,7 +37,7 @@
         function ObtenerPostDetalle() {
             return GetPostDetailService.get({ id: vm.id }, function (data) {
                 vm.entry = data;
-                console.log(data);
+                //console.log(data);
                 vm.entry;
             });
         }
@@ -51,9 +51,9 @@
             return new ObtenerComentarios();
         }
         function ObtenerComentarios() {
-            return GetCommentsService.get({ id: vm.id }, function (data) {
+            return GetCommentsFactory.query({ id: vm.id }, function (data) {
                 vm.comment = data;
-                console.log(data);
+                //console.log(data);
                 vm.comment;
             });
         }

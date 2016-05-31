@@ -19,11 +19,12 @@
             id: '@id'
         });
     }
-
+    
     // Comentarios de la publicacion
-    function GetCommentsService(resource) {
+    function GetCommentsService($resource) {
         return $resource('http://jsonplaceholder.typicode.com/posts/:id/comments', {
             id: '@id'
         });
     }
+    
 })();

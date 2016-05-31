@@ -19,7 +19,14 @@
 		* Code licensed under the Apache License v2.0.
 		* For details, see http://www.apache.org/licenses/LICENSE-2.0.
 		*/
-		body { padding-top: 70px; } footer { margin: 50px 0; }
+		
+		body {
+			padding-top: 70px;
+		}
+		
+		footer {
+			margin: 50px 0;
+		}
 	</style>
 </head>
 
@@ -71,6 +78,10 @@
                 </h1>
 
 				<div data-ui-view></div>
+				<!-- Post Detail -->
+				<div data-ui-view="post"></div>
+				<!-- Posted Comments -->
+				<div data-ui-view="comments"></div>
 				<!-- Pager -->
 
 			</div>
