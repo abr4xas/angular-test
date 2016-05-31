@@ -4,7 +4,16 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     concat = require('gulp-concat'),
     minifyCSS = require('gulp-clean-css'),
-    sourcemaps = require('gulp-sourcemaps');
+    sourcemaps = require('gulp-sourcemaps'),
+    header = require('gulp-header'),
+    pkg = require('./package.json'),
+    banner = ['/**',
+        ' * <%= pkg.name %> - <%= pkg.description %>',
+        ' * @author <%= pkg.author %>',
+        ' * @version v<%= pkg.version %>',
+        ' * @link <%= pkg.homepage %>',
+        ' */\n\n'
+    ].join('\n');
 
 // App Bundle
 gulp.task('bundleJS', function () {
@@ -44,6 +53,7 @@ gulp.task('my-app', function () {
         .pipe(sourcemaps.init())
         .pipe(concat('app-libs.min.js'))
         .pipe(size({ gzip: true, showFiles: true }))
+        .pipe(header(banner, { pkg: pkg }))
         .pipe(sourcemaps.write())
         .pipe(gulp.dest('./assets/js'))
         .pipe(browserSync.stream());
