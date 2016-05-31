@@ -3,10 +3,12 @@
     angular
         .module('cfapp')
         .controller('postCtrl', Post)
-        .controller('detailCtrl', Detail);
+        .controller('detailCtrl', Detail)
+        .controller('commentsCtrl', Comments);
 
     Post.$inject = ['GetPostFactory'];
     Detail.$inject = ['GetPostDetailFactory', '$stateParams'];
+    Comments.$inject = ['GetCommentsFactory', '$stateParams'];
 
     function Post(GetPostFactory) {
         var vm = this;
@@ -38,8 +40,24 @@
                 console.log(data);
                 vm.entry;
             });
-
         }
+    }
+    function Comments(GetCommentsFactory, $stateParams) {
+        var vm = this;
+        vm.comment;
+        vm.id = $stateParams.id;
+        execute();
+        function execute() {
+            return new ObtenerComentarios();
+        }
+        function ObtenerComentarios() {
+            return GetCommentsService.get({ id: vm.id }, function (data) {
+                vm.comment = data;
+                console.log(data);
+                vm.comment;
+            });
+        }
+
     }
 
 })();
