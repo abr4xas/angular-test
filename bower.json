@@ -1,7 +1,7 @@
 {
   "name": "Angular-Test",
   "version": "1.0.0",
-  "description": "Curso de AngularJS de Codigofacilito.com aplicando las guias de estilo de John Papa",
+  "description": "Prueba básica de AngularJS usando las guías de estilo de John Papa con JSONPlaceholder",
   "main": "gulpfile.js",
   "authors": [
     "Angel Cruz <me@abr4xas.org> (http://abr4xas.org)"
