@@ -1,15 +1,32 @@
-<div class="comment-list" ng-repeat="comments in ctrl.comment | orderBy:'-id' | limitTo: 10">
-    <div class="media">
-        <a class="pull-left" href="#0">
-            <img class="media-object" src="http://placehold.it/64x64" alt="">
-        </a>
-        <div class="media-body">
-            <h4 class="media-heading">
-            {{ comments.name }}
-             <small>August 25, 2014 at 9:30 PM</small>
-                        </h4> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus
-            odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla.
-            Donec lacinia congue felis in faucibus.
-        </div>
+<section>
+    <div data-ng-show="ctrl.loading">
+        <div class="loader">Loading...</div>
     </div>
-</div>
+    <div data-ng-show="!ctrl.loading && ctrl.comment.length <= 0">
+        <p>
+            Sorry, we have a few problems :(
+        </p>
+    </div>
+    <div data-ng-repeat="comments in ctrl.comment | orderBy:'-id' | limitTo: 10" class="comment-list animated">
+        <article>
+            <div class="media">
+                <a class="pull-left" href="#0">
+                    <img class="media-object" src="http://placehold.it/64x64" alt="">
+                </a>
+                <div class="media-body">
+                    <footer>
+                        <h4 class="media-heading">
+                            {{ comments.name }}
+                            <small>
+                                August 25, 2014 at 9:30 PM
+                            </small>
+                        </h4>
+                    </footer>
+                    <p>
+                        {{ comments.body }}
+                    </p>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>

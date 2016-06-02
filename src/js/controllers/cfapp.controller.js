@@ -13,6 +13,7 @@
     function Post(GetPostFactory) {
         var vm = this;
         vm.entries = [];
+        vm.loading = true;
         execute();
         function execute() {
             return new ObtenerPost();
@@ -22,6 +23,9 @@
                 vm.entries = data;
                 //console.log(data);
                 vm.entries;
+                vm.loading = false;
+            }, function (e) {
+                vm.loading = false;
             }); // regresa todas las publicaciones
         }
     } // End Post
@@ -30,6 +34,7 @@
         var vm = this;
         vm.entry;
         vm.id = $stateParams.id;
+        vm.loading = true;
         execute();
         function execute() {
             return new ObtenerPostDetalle();
@@ -39,14 +44,18 @@
                 vm.entry = data;
                 //console.log(data);
                 vm.entry;
+                vm.loading = false;
+            }, function (e) {
+                vm.loading = false;
             }); // regresa contenido del post
         }
     } // End Detail
-    
+
     function Comments(GetCommentsFactory, $stateParams) {
         var vm = this;
         vm.comment;
         vm.id = $stateParams.id;
+        vm.loading = true;
         execute();
         function execute() {
             return new ObtenerComentarios();
@@ -56,9 +65,12 @@
                 vm.comment = data;
                 //console.log(data);
                 vm.comment;
+                vm.loading = false;
+            }, function (e) {
+                vm.loading = false;
             }); // regresa los comentarios relacionados al post
         }
-        
+
     } // End Comments
-    
+
 })();

@@ -1,38 +1,48 @@
-<h1>{{ ctrl.entry.title }}</h1>
-<!-- Author -->
-<p class="lead">
-    by
-    <a href="#0"></a>
-</p>
-<hr>
-<!-- Date/Time -->
-<p>
-    <span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM
-</p>
+<div data-ng-show="ctrl.loading">
+    <div class="loader">Loading...</div>
+</div>
+<article data-ng-show="ctrl.entry" class="animated">
+    <header>
+        <h1>{{ ctrl.entry.title }}</h1>
+        <!-- Author -->
+        <p class="lead">
+            by
+            <a href="#0"></a>
+        </p>
+        <hr>
+        <!-- Date/Time -->
+        <p>
+            <span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM
+        </p>
+        <hr>
+    </header>
+    <!-- Preview Image -->
+    <img class="img-responsive" src="http://placehold.it/900x300" alt="">
 
-<hr>
-<!-- Preview Image -->
-<img class="img-responsive" src="http://placehold.it/900x300" alt="">
+    <hr>
+    <!-- Post Content -->
+    <p class="lead">
+        {{ ctrl.entry.body }}
+    </p>
 
-<hr>
-<!-- Post Content -->
-<p class="lead">
-    {{ ctrl.entry.body }}
-</p>
+    <hr>
 
-<hr>
+    <!-- Comments Form -->
+    <div class="well">
+        <h4>Leave a Comment:</h4>
+        <form role="form">
+            <div class="form-group">
+                <textarea class="form-control" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+  
+    </section>
+</article>
 
 <!-- Blog Comments -->
 
-<!-- Comments Form -->
-<div class="well">
-    <h4>Leave a Comment:</h4>
-    <form role="form">
-        <div class="form-group">
-            <textarea class="form-control" rows="3"></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-</div>
 
 <hr>
