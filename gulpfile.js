@@ -1,27 +1,29 @@
-var gulp = require('gulp'),
-    browserSync = require('browser-sync').create(),
-    size = require('gulp-size'),
-    uglify = require('gulp-uglify'),
-    concat = require('gulp-concat'),
-    minifyCSS = require('gulp-clean-css'),
-    sourcemaps = require('gulp-sourcemaps'),
-    header = require('gulp-header'),
-    pkg = require('./package.json'),
-    banner = ['/**',
-        ' * <%= pkg.name %> - <%= pkg.description %>',
-        ' * @author <%= pkg.author %>',
-        ' * @version v<%= pkg.version %>',
-        ' * @link <%= pkg.homepage %>',
-        ' */\n\n'
-    ].join('\n');
+'use strict';
+
+var gulp = require('gulp');
+var browserSync = require('browser-sync').create();
+var size = require('gulp-size');
+var uglify = require('gulp-uglify');
+var concat = require('gulp-concat');
+var minifyCSS = require('gulp-clean-css');
+var sourcemaps = require('gulp-sourcemaps');
+var header = require('gulp-header');
+var pkg = require('./package.json');
+var banner = ['/**',
+    ' * <%= pkg.name %> - <%= pkg.description %>',
+    ' * @author <%= pkg.author %>',
+    ' * @version v<%= pkg.version %>',
+    ' * @link <%= pkg.homepage %>',
+    ' */\n\n'
+].join('\n');
 
 // App Bundle
 gulp.task('bundleJS', function () {
-    var jQuery = './src/components/jquery/dist/jquery.js',
-        BootstrapJs = './src/components/bootstrap/dist/js/bootstrap.js',
-        angular = './src/components/angular/angular.js',
-        uiRouter = './src/components/angular-ui-router/release/angular-ui-router.js',
-        ngResource = './src/components/angular-resource/angular-resource.js';
+    var jQuery = './node_modules/jquery/dist/jquery.js';
+    var BootstrapJs = './node_modules/bootstrap/dist/js/bootstrap.js';
+    var angular = './node_modules/angular/angular.js';
+    var uiRouter = './node_modules/angular-ui-router/release/angular-ui-router.js';
+    var ngResource = './node_modules/angular-resource/angular-resource.js';
 
     gulp.src([jQuery, BootstrapJs])
         .pipe(sourcemaps.init())
@@ -44,10 +46,10 @@ gulp.task('bundleJS', function () {
 
 // App Bundle
 gulp.task('my-app', function () {
-    var appModule = './src/js/modules/*.js',
-        appService = './src/js/services/*.js',
-        appRoutes = './src/js/routes/*.js',
-        appController = './src/js/controllers/*.js';
+    var appModule = './src/js/modules/*.js';
+    var appService = './src/js/services/*.js';
+    var appRoutes = './src/js/routes/*.js';
+    var appController = './src/js/controllers/*.js';
 
     return gulp.src([appModule, appService, appController, appRoutes])
         .pipe(sourcemaps.init())
@@ -61,18 +63,19 @@ gulp.task('my-app', function () {
 
 // CSS
 gulp.task('css', function () {
-    var bootStrap = './src/components/bootstrap/dist/css/bootstrap.css';
+    var bootStrap = './node_modules/bootstrap/dist/css/bootstrap.css';
+    var appStyle = './src/css/style.css';
 
-    return gulp.src([bootStrap])
+    gulp.src([bootStrap, appStyle])
         .pipe(minifyCSS('*'))
-        .pipe(concat('style.min.css'))
+        .pipe(concat('app.min.css'))
         .pipe(size({ gzip: true, showFiles: true }))
         .pipe(gulp.dest('./assets/css'));
 });
 
 // Copiar archivos estaticos (icon fonts bootstrap/font-awesome)
 gulp.task('static', function () {
-    var BootstrapF = './src/components/bootstrap/fonts/**/*';
+    var BootstrapF = './node_modules/bootstrap/fonts/**/*';
 
     return gulp.src([BootstrapF])
         .pipe(gulp.dest('./assets/fonts'));

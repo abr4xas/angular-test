@@ -1,6 +1,6 @@
 {
   "name": "angular-test",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Prueba básica de AngularJS usando las guías de estilo de John Papa con JSONPlaceholder",
   "main": "gulpfile.js",
   "scripts": {
@@ -30,5 +30,12 @@
     "gulp-size": "^2.1.0",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^1.5.3"
+  },
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-resource": "^1.5.8",
+    "angular-ui-router": "^0.3.1",
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.1.0"
   }
 }

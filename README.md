@@ -6,7 +6,6 @@
 ### Requerimientos
 
 * Node
-* Bower
 * Gulp
 
 ```bash
@@ -15,13 +14,13 @@ $ bower install
 
 luego: 
 
-```
+```bash
 $ npm install
 ``` 
 
 Y por ultimo:
 
 
-```
+```bash
 $ npm start
 ``` 
